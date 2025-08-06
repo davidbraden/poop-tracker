@@ -24,10 +24,10 @@ const dayDetailsContainer = document.getElementById('day-details');
 function rerenderUI() {
     renderCalendar(currentDate, logs);
 
-    // Only show day details if a day is actually selected
     if (selectedDate) {
         const logsForDay = logs.filter(log => new Date(log.timestamp).toDateString() === selectedDate.toDateString());
         renderDayDetails(selectedDate, logsForDay);
+        dayDetailsContainer.style.display = 'block';
     } else {
         dayDetailsContainer.style.display = 'none';
     }

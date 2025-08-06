@@ -115,6 +115,4 @@ export function renderDayDetails(date, logsForDay) {
         listItem.appendChild(deleteButton);
         dayDetailsList.appendChild(listItem);
     });
-
-    dayDetailsContainer.style.display = 'block';
 }
