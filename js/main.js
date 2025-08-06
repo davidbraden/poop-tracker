@@ -4,7 +4,7 @@ import { renderCalendar, renderDayDetails, toggleCalendar } from './ui.js';
 // --- STATE --- //
 let logs = [];
 let currentDate = new Date(); // For calendar navigation
-let selectedDate = new Date(); // For detail view, defaults to today
+let selectedDate = null; // Default to no day selected
 let isCalendarVisible = false;
 
 // --- DOM ELEMENTS --- //
@@ -14,6 +14,7 @@ const nextMonthButton = document.getElementById('next-month-button');
 const calendarGrid = document.getElementById('calendar-grid');
 const dayDetailsList = document.getElementById('day-details-list');
 const toggleCalendarButton = document.getElementById('toggle-calendar-button');
+const dayDetailsContainer = document.getElementById('day-details');
 
 // --- FUNCTIONS --- //
 
@@ -23,15 +24,20 @@ const toggleCalendarButton = document.getElementById('toggle-calendar-button');
 function rerenderUI() {
     renderCalendar(currentDate, logs);
 
-    const logsForDay = logs.filter(log => new Date(log.timestamp).toDateString() === selectedDate.toDateString());
-    renderDayDetails(selectedDate, logsForDay);
+    // Only show day details if a day is actually selected
+    if (selectedDate) {
+        const logsForDay = logs.filter(log => new Date(log.timestamp).toDateString() === selectedDate.toDateString());
+        renderDayDetails(selectedDate, logsForDay);
+    } else {
+        dayDetailsContainer.style.display = 'none';
+    }
 
     toggleCalendar(isCalendarVisible);
     toggleCalendarButton.textContent = isCalendarVisible ? 'Hide Calendar' : 'Show Calendar';
 }
 
 /**
- * Adds a new log entry, saves it, and re-renders the UI.
+ * Adds a new log entry, saves it, and shows the details for today.
  */
 function addLog() {
     const newLog = {
@@ -40,13 +46,13 @@ function addLog() {
     };
     logs.unshift(newLog);
     saveLogs(logs);
-    selectedDate = new Date(); // Switch to today's view after logging
+    selectedDate = new Date(); // Set selected day to today
+    isCalendarVisible = false; // Ensure calendar is hidden
     rerenderUI();
 }
 
 /**
  * Deletes a log entry, saves the change, and re-renders the UI.
- * @param {number} logId - The ID of the log to delete.
  */
 function deleteLog(logId) {
     logs = logs.filter(log => log.id !== logId);
@@ -56,7 +62,6 @@ function deleteLog(logId) {
 
 /**
  * Changes the calendar to the previous or next month.
- * @param {number} offset - -1 for the previous month, 1 for the next month.
  */
 function changeMonth(offset) {
     currentDate.setMonth(currentDate.getMonth() + offset);
@@ -64,17 +69,19 @@ function changeMonth(offset) {
 }
 
 /**
- * Toggles the visibility of the main calendar grid.
+ * Toggles the visibility of the main calendar.
  */
 function toggleCalendarVisibility() {
     isCalendarVisible = !isCalendarVisible;
-    toggleCalendar(isCalendarVisible);
-    toggleCalendarButton.textContent = isCalendarVisible ? 'Hide Calendar' : 'Show Calendar';
+    // If we are hiding the calendar, also hide the details
+    if (!isCalendarVisible) {
+        selectedDate = null;
+    }
+    rerenderUI();
 }
 
 /**
  * Handles clicks within the calendar grid to select a day.
- * @param {Event} event
  */
 function handleCalendarClick(event) {
     const dayCell = event.target.closest('.calendar-day');
@@ -87,7 +94,6 @@ function handleCalendarClick(event) {
 
 /**
  * Handles clicks within the day details list (for deleting items).
- * @param {Event} event
  */
 function handleDayDetailsClick(event) {
     if (event.target.classList.contains('delete-button')) {
@@ -110,7 +116,7 @@ function init() {
     prevMonthButton.addEventListener('click', () => changeMonth(-1));
     nextMonthButton.addEventListener('click', () => changeMonth(1));
 
-    // Load initial data and render the initial "Today" view
+    // Load initial data and render the initial clean view
     logs = getLogs();
     rerenderUI();
 }
