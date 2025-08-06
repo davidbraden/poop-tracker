@@ -14,6 +14,7 @@ const nextMonthButton = document.getElementById('next-month-button');
 const calendarGrid = document.getElementById('calendar-grid');
 const dayDetailsList = document.getElementById('day-details-list');
 const toggleCalendarButton = document.getElementById('toggle-calendar-button');
+const closeCalendarButton = document.getElementById('close-calendar-button');
 const dayDetailsContainer = document.getElementById('day-details');
 const mainElement = document.querySelector('main');
 
@@ -116,6 +117,7 @@ function init() {
     // Set up event listeners
     logButton.addEventListener('click', addLog);
     toggleCalendarButton.addEventListener('click', toggleCalendarVisibility);
+    closeCalendarButton.addEventListener('click', toggleCalendarVisibility);
     calendarGrid.addEventListener('click', handleCalendarClick);
     dayDetailsList.addEventListener('click', handleDayDetailsClick);
     prevMonthButton.addEventListener('click', () => changeMonth(-1));
