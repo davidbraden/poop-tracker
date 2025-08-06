@@ -196,37 +196,48 @@ h2 {
 .calendar-day {
     padding: 0.5rem;
     border-radius: 6px;
-    background-color: #ffffff;
     border: 1px solid #ecf0f1;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 50px; /* Ensure consistent height */
 }
 
-.calendar-day.is-today {
+.day-number {
+    font-size: 0.9rem;
+    align-self: flex-start;
+}
+
+.calendar-day.is-today .day-number {
     font-weight: bold;
-    border-color: #3498db;
+    color: #3498db;
 }
 
 .calendar-day.has-logs {
-    background-color: #eaf5fd;
     cursor: pointer;
-    font-weight: bold;
 }
 
-.calendar-day.has-logs:hover {
-    background-color: #d4eaf7;
+/* New color-coded backgrounds */
+.logs-green { background-color: #e8f5e9; }
+.logs-orange { background-color: #fff3e0; }
+.logs-red { background-color: #ffebee; }
+
+.logs-green:hover, .logs-orange:hover, .logs-red:hover {
+    filter: brightness(95%);
 }
 
 .log-count {
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    background-color: #3498db;
-    color: white;
-    border-radius: 50%;
-    width: 20px;
-    height: 20px;
-    font-size: 0.8rem;
-    line-height: 20px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    align-self: flex-end;
+}
+
+.weekday-header {
+    font-weight: bold;
+    color: #7f8c8d;
+    align-items: center;
+    justify-content: center;
 }
 
 /* --- Day Details --- */
