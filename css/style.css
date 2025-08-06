@@ -219,9 +219,16 @@ h2 {
 }
 
 /* New, more vibrant color-coded backgrounds */
-.logs-green { background-color: #66bb6a; color: white; }
-.logs-orange { background-color: #ffa726; color: white; }
-.logs-red { background-color: #ef5350; color: white; }
+.logs-green { background-color: #66bb6a; }
+.logs-orange { background-color: #ffa726; }
+.logs-red { background-color: #ef5350; }
+
+/* Ensure date number has high contrast on colored backgrounds */
+.logs-green .day-number,
+.logs-orange .day-number,
+.logs-red .day-number {
+    color: white;
+}
 
 .logs-green:hover, .logs-orange:hover, .logs-red:hover {
     filter: brightness(90%);
