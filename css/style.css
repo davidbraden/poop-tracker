@@ -199,14 +199,13 @@ h2 {
     border: 1px solid #ecf0f1;
     position: relative;
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    justify-content: center; /* Center the date number */
+    align-items: center; /* Center the date number */
     min-height: 50px; /* Ensure consistent height */
 }
 
 .day-number {
-    font-size: 0.9rem;
-    align-self: flex-start;
+    font-size: 1.2rem; /* Make the date bigger */
 }
 
 .calendar-day.is-today .day-number {
@@ -218,19 +217,29 @@ h2 {
     cursor: pointer;
 }
 
-/* New color-coded backgrounds */
-.logs-green { background-color: #e8f5e9; }
-.logs-orange { background-color: #fff3e0; }
-.logs-red { background-color: #ffebee; }
+/* New, more vibrant color-coded backgrounds */
+.logs-green { background-color: #66bb6a; color: white; }
+.logs-orange { background-color: #ffa726; color: white; }
+.logs-red { background-color: #ef5350; color: white; }
 
 .logs-green:hover, .logs-orange:hover, .logs-red:hover {
-    filter: brightness(95%);
+    filter: brightness(90%);
 }
 
 .log-count {
-    font-size: 0.9rem;
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #333;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    font-size: 0.75rem;
     font-weight: bold;
-    align-self: flex-end;
+    line-height: 18px;
+    text-align: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
 }
 
 .weekday-header {
