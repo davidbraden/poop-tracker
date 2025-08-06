@@ -197,6 +197,7 @@ h2 {
     padding: 0.5rem;
     border-radius: 6px;
     border: 1px solid #ecf0f1;
+    background-color: #ffffff; /* Default background for empty days */
     position: relative;
     display: flex;
     justify-content: center; /* Center the date number */
