@@ -15,6 +15,7 @@ const calendarGrid = document.getElementById('calendar-grid');
 const dayDetailsList = document.getElementById('day-details-list');
 const toggleCalendarButton = document.getElementById('toggle-calendar-button');
 const dayDetailsContainer = document.getElementById('day-details');
+const mainElement = document.querySelector('main');
 
 // --- FUNCTIONS --- //
 
@@ -24,12 +25,15 @@ const dayDetailsContainer = document.getElementById('day-details');
 function rerenderUI() {
     renderCalendar(currentDate, logs);
 
+    // Only show day details if a day is actually selected
     if (selectedDate) {
         const logsForDay = logs.filter(log => new Date(log.timestamp).toDateString() === selectedDate.toDateString());
         renderDayDetails(selectedDate, logsForDay);
         dayDetailsContainer.style.display = 'block';
+        mainElement.classList.add('active');
     } else {
         dayDetailsContainer.style.display = 'none';
+        mainElement.classList.remove('active');
     }
 
     toggleCalendar(isCalendarVisible);
