@@ -101,6 +101,18 @@ h2 {
     box-shadow: 0 6px 16px rgba(52, 152, 219, 0.4);
 }
 
+/* Animation for successful log */
+.log-button-main.is-success {
+    animation: flash-success 1s ease-in-out;
+}
+
+@keyframes flash-success {
+    0% { background: linear-gradient(45deg, #3498db, #2980b9); }
+    50% { background: linear-gradient(45deg, #2ecc71, #27ae60); } /* Green flash */
+    100% { background: linear-gradient(45deg, #3498db, #2980b9); }
+}
+
+
 
 /* --- Log List --- */
 #log-list {

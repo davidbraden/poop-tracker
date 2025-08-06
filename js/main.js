@@ -53,9 +53,14 @@ function addLog() {
     };
     logs.unshift(newLog);
     saveLogs(logs);
-    selectedDate = new Date(); // Set selected day to today
-    isCalendarVisible = false; // Ensure calendar is hidden
+    selectedDate = new Date(); // Switch to today's view after logging
     rerenderUI();
+
+    // Trigger success animation on the button
+    logButton.classList.add('is-success');
+    setTimeout(() => {
+        logButton.classList.remove('is-success');
+    }, 1000); // Duration of the animation
 }
 
 /**
