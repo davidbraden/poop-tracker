@@ -25,17 +25,18 @@ const mainElement = document.querySelector('main');
 function rerenderUI() {
     renderCalendar(currentDate, logs);
 
-    // Only show day details if a day is actually selected
-    if (selectedDate) {
+    const shouldShowDetails = !!selectedDate;
+    const shouldShowMain = isCalendarVisible || shouldShowDetails;
+
+    if (shouldShowDetails) {
         const logsForDay = logs.filter(log => new Date(log.timestamp).toDateString() === selectedDate.toDateString());
         renderDayDetails(selectedDate, logsForDay);
         dayDetailsContainer.style.display = 'block';
-        mainElement.classList.add('active');
     } else {
         dayDetailsContainer.style.display = 'none';
-        mainElement.classList.remove('active');
     }
 
+    mainElement.classList.toggle('active', shouldShowMain);
     toggleCalendar(isCalendarVisible);
     toggleCalendarButton.classList.toggle('active', isCalendarVisible);
 }
