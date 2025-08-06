@@ -53,8 +53,7 @@ function addLog() {
     };
     logs.unshift(newLog);
     saveLogs(logs);
-    selectedDate = new Date(); // Switch to today's view after logging
-    rerenderUI();
+    rerenderUI(); // Re-render to update calendar counts if visible
 
     // Trigger success animation on the button
     logButton.classList.add('is-success');
