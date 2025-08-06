@@ -256,27 +256,24 @@ h2 {
 
 /* --- Close Button --- */
 .close-button {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    background: #e0e0e0;
-    border: none;
+    background: none;
+    border: 1px solid #bdc3c7;
     border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    font-size: 1.2rem;
-    font-weight: bold;
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
     color: #7f8c8d;
     cursor: pointer;
     transition: all 0.2s ease;
-    line-height: 30px; /* Center the '×' */
+    line-height: 1; /* Adjust for better '×' alignment */
 }
 
 .close-button:hover {
-    background: #c7c7c7;
-    color: #333;
+    background: #e74c3c;
+    color: #ffffff;
+    border-color: #e74c3c;
 }
 
 #calendar-wrapper {
-    position: relative; /* Needed for absolute positioning of the close button */
+    position: relative;
 }
