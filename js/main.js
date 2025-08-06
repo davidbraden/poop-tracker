@@ -15,6 +15,7 @@ const calendarGrid = document.getElementById('calendar-grid');
 const dayDetailsList = document.getElementById('day-details-list');
 const toggleCalendarButton = document.getElementById('toggle-calendar-button');
 const closeCalendarButton = document.getElementById('close-calendar-button');
+const backToCalendarButton = document.getElementById('back-to-calendar-button');
 const dayDetailsContainer = document.getElementById('day-details');
 const mainElement = document.querySelector('main');
 
@@ -108,6 +109,15 @@ function handleDayDetailsClick(event) {
     }
 }
 
+/**
+ * Handles returning from the details view to the calendar grid.
+ */
+function handleBackToCalendar() {
+    selectedDate = null;
+    isCalendarVisible = true;
+    rerenderUI();
+}
+
 // --- INITIALIZATION --- //
 
 /**
@@ -118,6 +128,7 @@ function init() {
     logButton.addEventListener('click', addLog);
     toggleCalendarButton.addEventListener('click', toggleCalendarVisibility);
     closeCalendarButton.addEventListener('click', toggleCalendarVisibility);
+    backToCalendarButton.addEventListener('click', handleBackToCalendar);
     calendarGrid.addEventListener('click', handleCalendarClick);
     dayDetailsList.addEventListener('click', handleDayDetailsClick);
     prevMonthButton.addEventListener('click', () => changeMonth(-1));

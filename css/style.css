@@ -238,6 +238,34 @@ h2 {
     border: 1px solid #ecf0f1;
 }
 
+.day-details-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+#day-details h3 {
+    margin: 0;
+}
+
+.back-button {
+    background: none;
+    border: 1px solid #bdc3c7;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
+    color: #7f8c8d;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-right: 1rem;
+    padding-bottom: 4px; /* Align arrow better */
+}
+
+.back-button:hover {
+    background-color: #ecf0f1;
+}
+
 #day-details-list {
     list-style: none;
     padding: 0;
