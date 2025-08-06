@@ -235,11 +235,11 @@ h2 {
 .logs-orange { background-color: #ffa726; }
 .logs-red { background-color: #ef5350; }
 
-/* Ensure date number has high contrast on colored backgrounds */
+/* Ensure date number has high contrast on colored backgrounds, even if it's today */
 .logs-green .day-number,
 .logs-orange .day-number,
 .logs-red .day-number {
-    color: white;
+    color: white !important; /* Use !important to override conflicting styles */
 }
 
 .logs-green:hover, .logs-orange:hover, .logs-red:hover {
