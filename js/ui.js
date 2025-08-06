@@ -1,3 +1,4 @@
+const calendarWrapper = document.getElementById('calendar-wrapper');
 const monthYearHeader = document.getElementById('month-year-header');
 const calendarGrid = document.getElementById('calendar-grid');
 const dayDetailsContainer = document.getElementById('day-details');
@@ -5,11 +6,11 @@ const dayDetailsHeader = document.getElementById('day-details-header');
 const dayDetailsList = document.getElementById('day-details-list');
 
 /**
- * Toggles the visibility of the calendar grid.
+ * Toggles the visibility of the calendar.
  * @param {boolean} show - True to show the calendar, false to hide it.
  */
 export function toggleCalendar(show) {
-    calendarGrid.style.display = show ? 'grid' : 'none';
+    calendarWrapper.style.display = show ? 'block' : 'none';
 }
 
 /**

@@ -131,22 +131,25 @@ h2 {
 .calendar-header h2 {
     margin: 0;
     font-size: 1.5rem;
+    color: #34495e;
 }
 
-.calendar-toggle-button {
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    font-weight: bold;
+.secondary-button {
+    display: block;
+    width: 100%;
+    margin-bottom: 1.5rem;
+    padding: 0.75rem;
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 1px solid #bdc3c7;
     color: #34495e;
+    font-size: 1rem;
+    border-radius: 8px;
     cursor: pointer;
-    padding: 0.5rem;
-    border-radius: 6px;
     transition: background-color 0.2s;
 }
 
-.calendar-toggle-button:hover {
-    background-color: #ecf0f1;
+.secondary-button:hover {
+    background-color: rgba(255, 255, 255, 0.4);
 }
 
 .calendar-header button {

@@ -10,13 +10,16 @@
     <main>
         <!-- Calendar View Container -->
         <div id="calendar-view">
-            <div class="calendar-header">
-                <button id="prev-month-button">&lt;</button>
-                <button id="month-year-header" class="calendar-toggle-button"></button>
-                <button id="next-month-button">&gt;</button>
-            </div>
-            <div id="calendar-grid" class="calendar-grid" style="display: none;">
-                <!-- Calendar days will be rendered here -->
+            <button id="toggle-calendar-button" class="secondary-button">Show Calendar</button>
+            <div id="calendar-wrapper" style="display: none;">
+                <div class="calendar-header">
+                    <button id="prev-month-button">&lt;</button>
+                    <h2 id="month-year-header"></h2>
+                    <button id="next-month-button">&gt;</button>
+                </div>
+                <div id="calendar-grid" class="calendar-grid">
+                    <!-- Calendar days will be rendered here -->
+                </div>
             </div>
             <div id="day-details">
                 <h3 id="day-details-header"></h3>

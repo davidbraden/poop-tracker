@@ -11,9 +11,9 @@ let isCalendarVisible = false;
 const logButton = document.getElementById('log-button');
 const prevMonthButton = document.getElementById('prev-month-button');
 const nextMonthButton = document.getElementById('next-month-button');
-const monthYearHeader = document.getElementById('month-year-header');
 const calendarGrid = document.getElementById('calendar-grid');
 const dayDetailsList = document.getElementById('day-details-list');
+const toggleCalendarButton = document.getElementById('toggle-calendar-button');
 
 // --- FUNCTIONS --- //
 
@@ -21,15 +21,13 @@ const dayDetailsList = document.getElementById('day-details-list');
  * Renders the entire UI based on the current state.
  */
 function rerenderUI() {
-    // Always render the calendar (it might be hidden, but its state is correct)
     renderCalendar(currentDate, logs);
 
-    // Render the details for the currently selected day
     const logsForDay = logs.filter(log => new Date(log.timestamp).toDateString() === selectedDate.toDateString());
     renderDayDetails(selectedDate, logsForDay);
 
-    // Show or hide the calendar grid based on state
     toggleCalendar(isCalendarVisible);
+    toggleCalendarButton.textContent = isCalendarVisible ? 'Hide Calendar' : 'Show Calendar';
 }
 
 /**
@@ -42,8 +40,7 @@ function addLog() {
     };
     logs.unshift(newLog);
     saveLogs(logs);
-    // If we are viewing a day other than today, switch back to today after logging.
-    selectedDate = new Date();
+    selectedDate = new Date(); // Switch to today's view after logging
     rerenderUI();
 }
 
@@ -63,7 +60,7 @@ function deleteLog(logId) {
  */
 function changeMonth(offset) {
     currentDate.setMonth(currentDate.getMonth() + offset);
-    renderCalendar(currentDate, logs); // Just re-render the calendar, not the whole UI
+    renderCalendar(currentDate, logs);
 }
 
 /**
@@ -72,6 +69,7 @@ function changeMonth(offset) {
 function toggleCalendarVisibility() {
     isCalendarVisible = !isCalendarVisible;
     toggleCalendar(isCalendarVisible);
+    toggleCalendarButton.textContent = isCalendarVisible ? 'Hide Calendar' : 'Show Calendar';
 }
 
 /**
@@ -106,7 +104,7 @@ function handleDayDetailsClick(event) {
 function init() {
     // Set up event listeners
     logButton.addEventListener('click', addLog);
-    monthYearHeader.addEventListener('click', toggleCalendarVisibility);
+    toggleCalendarButton.addEventListener('click', toggleCalendarVisibility);
     calendarGrid.addEventListener('click', handleCalendarClick);
     dayDetailsList.addEventListener('click', handleDayDetailsClick);
     prevMonthButton.addEventListener('click', () => changeMonth(-1));
