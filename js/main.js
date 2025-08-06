@@ -33,7 +33,7 @@ function rerenderUI() {
     }
 
     toggleCalendar(isCalendarVisible);
-    toggleCalendarButton.textContent = isCalendarVisible ? 'Hide Calendar' : 'Show Calendar';
+    toggleCalendarButton.classList.toggle('active', isCalendarVisible);
 }
 
 /**

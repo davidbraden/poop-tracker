@@ -51,7 +51,7 @@ h2 {
     left: 0;
     right: 0;
     display: flex;
-    justify-content: center; /* Center the single button */
+    justify-content: space-around; /* Evenly space the buttons */
     align-items: center;
     background-color: #ffffff;
     border-top: 1px solid #e0e0e0;
@@ -59,6 +59,22 @@ h2 {
     padding: 0.5rem 1rem;
     /* Accommodate safe areas on iOS */
     padding-bottom: calc(0.5rem + env(safe-area-inset-bottom));
+}
+
+/* --- Footer View Button --- */
+.view-button {
+    background: none;
+    border: none;
+    color: #7f8c8d;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 0.5rem;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.view-button.active {
+    color: #3498db;
 }
 
 /* --- Main "Log" Button --- */
