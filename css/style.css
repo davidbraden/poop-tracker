@@ -83,7 +83,8 @@ h2 {
 
 /* --- Main "Log" Button --- */
 .log-button-main {
-    background: linear-gradient(45deg, #3498db, #2980b9);
+    position: relative; /* Required for pseudo-elements */
+    background-color: transparent; /* The button itself is transparent */
     color: white;
     border: none;
     border-radius: 50%;
@@ -94,6 +95,31 @@ h2 {
     cursor: pointer;
     box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
     transition: all 0.3s ease;
+    z-index: 1; /* Ensure button is on top */
+}
+
+/* The background circles (pseudo-elements) */
+.log-button-main::before,
+.log-button-main::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    z-index: -1; /* Place behind the text */
+}
+
+/* Default blue background */
+.log-button-main::before {
+    background: linear-gradient(45deg, #3498db, #2980b9);
+}
+
+/* Green flash background (initially hidden) */
+.log-button-main::after {
+    background: linear-gradient(45deg, #2ecc71, #27ae60);
+    opacity: 0;
 }
 
 .log-button-main:hover {
@@ -102,12 +128,12 @@ h2 {
 }
 
 /* Animation for successful log */
-.log-button-main.is-success {
-    animation: flash-success 1s ease-in-out;
+.log-button-main.is-success::after {
+    animation: flash-opacity 1s ease-in-out;
 }
 
-@keyframes flash-success {
-    50% { background: linear-gradient(45deg, #2ecc71, #27ae60); } /* Green flash */
+@keyframes flash-opacity {
+    50% { opacity: 1; }
 }
 
 
