@@ -241,11 +241,11 @@ h2 {
     background-color: rgba(255, 255, 255, 0.9);
     color: #333;
     border-radius: 50%;
-    width: 18px;
-    height: 18px;
-    font-size: 0.75rem;
+    width: 16px; /* Smaller size */
+    height: 16px; /* Smaller size */
+    font-size: 0.7rem; /* Smaller font */
     font-weight: bold;
-    line-height: 18px;
+    line-height: 16px; /* Adjusted line height */
     text-align: center;
     box-shadow: 0 1px 3px rgba(0,0,0,0.2);
 }
