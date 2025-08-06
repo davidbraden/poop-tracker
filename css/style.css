@@ -202,7 +202,7 @@ h2 {
     display: flex;
     justify-content: center; /* Center the date number */
     align-items: center; /* Center the date number */
-    min-height: 50px; /* Ensure consistent height */
+    aspect-ratio: 1 / 1; /* Make the tile a perfect square */
 }
 
 .day-number {
