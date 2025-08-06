@@ -1,5 +1,5 @@
 steps:
   - name: 'gcr.io/cloud-builders/gsutil'
-    args: ['-m', 'rsync', '-r', '.', 'gs://poop-tracker-david-braden']
+    args: ['-m', 'rsync', '-r', '.', 'gs://poop-tracker-123']
 options:
   logging: CLOUD_LOGGING_ONLY
