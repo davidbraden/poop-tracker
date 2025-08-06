@@ -82,12 +82,7 @@ export function renderCalendar(date, logs) {
  * @param {Array<Object>} logsForDay - The logs for that specific day.
  */
 export function renderDayDetails(date, logsForDay) {
-    const today = new Date();
-    if (date.toDateString() === today.toDateString()) {
-        dayDetailsHeader.textContent = "Today's Logs";
-    } else {
-        dayDetailsHeader.textContent = `Details for ${date.toLocaleDateString()}`;
-    }
+    dayDetailsHeader.textContent = `Details for ${date.toLocaleDateString()}`;
 
     dayDetailsList.innerHTML = '';
 
