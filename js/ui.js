@@ -1,9 +1,16 @@
-const calendarView = document.getElementById('calendar-view');
 const monthYearHeader = document.getElementById('month-year-header');
 const calendarGrid = document.getElementById('calendar-grid');
 const dayDetailsContainer = document.getElementById('day-details');
 const dayDetailsHeader = document.getElementById('day-details-header');
 const dayDetailsList = document.getElementById('day-details-list');
+
+/**
+ * Toggles the visibility of the calendar grid.
+ * @param {boolean} show - True to show the calendar, false to hide it.
+ */
+export function toggleCalendar(show) {
+    calendarGrid.style.display = show ? 'grid' : 'none';
+}
 
 /**
  * Renders the calendar for a specific month and year.
@@ -12,13 +19,11 @@ const dayDetailsList = document.getElementById('day-details-list');
  */
 export function renderCalendar(date, logs) {
     calendarGrid.innerHTML = '';
-    dayDetailsContainer.style.display = 'none'; // Hide details when re-rendering month
-
-    const month = date.getMonth();
-    const year = date.getFullYear();
 
     monthYearHeader.textContent = date.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
 
+    const month = date.getMonth();
+    const year = date.getFullYear();
     const firstDayOfMonth = new Date(year, month, 1).getDay();
     const daysInMonth = new Date(year, month + 1, 0).getDate();
 
@@ -71,22 +76,30 @@ export function renderCalendar(date, logs) {
 }
 
 /**
- * Renders the details for a specific day, including delete buttons for each entry.
+ * Renders the details for a specific day.
  * @param {Date} date - The selected date.
  * @param {Array<Object>} logsForDay - The logs for that specific day.
  */
 export function renderDayDetails(date, logsForDay) {
-    dayDetailsHeader.textContent = `Details for ${date.toLocaleDateString()}`;
+    const today = new Date();
+    if (date.toDateString() === today.toDateString()) {
+        dayDetailsHeader.textContent = "Today's Logs";
+    } else {
+        dayDetailsHeader.textContent = `Details for ${date.toLocaleDateString()}`;
+    }
+
     dayDetailsList.innerHTML = '';
 
     if (logsForDay.length === 0) {
-        dayDetailsContainer.style.display = 'none';
+        const emptyMessage = document.createElement('li');
+        emptyMessage.textContent = 'No movements logged for this day.';
+        dayDetailsList.appendChild(emptyMessage);
         return;
     }
 
     logsForDay.forEach(log => {
         const listItem = document.createElement('li');
-        listItem.className = 'log-entry'; // Reuse class for styling
+        listItem.className = 'log-entry';
 
         const timestamp = new Date(log.timestamp);
         const timeText = document.createElement('span');

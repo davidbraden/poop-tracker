@@ -12,13 +12,13 @@
         <div id="calendar-view">
             <div class="calendar-header">
                 <button id="prev-month-button">&lt;</button>
-                <h2 id="month-year-header"></h2>
+                <button id="month-year-header" class="calendar-toggle-button"></button>
                 <button id="next-month-button">&gt;</button>
             </div>
-            <div class="calendar-grid" id="calendar-grid">
+            <div id="calendar-grid" class="calendar-grid" style="display: none;">
                 <!-- Calendar days will be rendered here -->
             </div>
-            <div id="day-details" style="display: none;">
+            <div id="day-details">
                 <h3 id="day-details-header"></h3>
                 <ul id="day-details-list"></ul>
             </div>

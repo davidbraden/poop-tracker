@@ -1,12 +1,27 @@
 /* --- General Body & Typography --- */
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    /* Placeholder Gradient Background */
-    background: linear-gradient(to bottom, #6a85b6, #bac8e0);
+    /* Background Image */
+    background-image: url('../img/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
     color: #333;
     margin: 0;
     /* Add padding to the bottom to prevent content from being hidden by the fixed footer */
     padding-bottom: 100px;
+}
+
+/* Add a subtle overlay to the body to improve text readability */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.2);
+    z-index: -1;
 }
 
 /* --- Main Container --- */
